@@ -16,3 +16,6 @@ save shares.dta, replace
 use ind.dta, clear
 sort statefip year
 merge m:1 statefip year using shares.dta
+drop if _merge!=3
+drop _merge
+save ind.dta, replace
