@@ -9,4 +9,10 @@ save ind.dta, replace
 use HW4.dta, clear
 gen fb=(bpld>=15000)
 collapse (mean) fb, by(statefip year)
+save shares.dta, replace
 *foreign born share
+
+*Merge
+use ind.dta, clear
+sort statefip year
+merge m:1 statefip year using shares.dta
